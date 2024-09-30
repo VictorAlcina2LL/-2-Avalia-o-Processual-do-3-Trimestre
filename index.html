@@ -3,52 +3,118 @@
 Programa: Clique no botão e movimente o quadrado.
 Nome: ISABELLA OLIVEIRA RIBEIRO  - Nº: 14 - Turma: 2L
 Nome: MATHEUS SOLER BINA         - Nº: 18      
-Nome: THAINA OLIVEIRA SILVA     - Nº: 26
+Nome: THAINA OLIVEIRA SILVA      - Nº: 26
 Nome: VICTOR REGO MUNIZ          - Nº: 27
-Nome: DIGITE O NOME DE OUTRO MEMBRO DO GRUPO - Nº: DIGITE O NUMERO AQUI.
-DESCRIÇÃO: Descreva, resumidamente, o que faz o seu programa aqui.
+DESCRIÇÃO: Neste programa, movimentamos o componente (quadrado) no canvas quando clicamos em cada botão específico: Cima, Baixo, Esquerda, Direita. 
 -->
 <!DOCTYPE html>
+
 <html lang="pt-br">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Movimento do Componente</title>
-  <body>
-  <style> 
   
-   canvas{
-      border-style: ridge;
-      border-color: aqua; 
-      display: block; 
-      margin: 30px auto; 
+  <meta charset="UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Movimento do Quadrado</title>
+  <link rel="icon" href="icon.png">
+  
+  <h1 class="h1">Movimente o quadrado</h1>
+  
+  <body class="body">
+  
+  <style> 
+     
+    .h1{
+      color: red;
+      
+      background-color: blue;
+      
+      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+      
+      text-align: center;
+
+    }
+
+     .body{
+      
+      background-color: black;
+     
+    }
+      
+      canvas{
+      
+        border-style: ridge;
+      
+        border-color: darkmagenta; 
+      
+        display: block; 
+      
+        margin: 30px auto; 
+      
+        background-color: steelblue;
     }
     .controls {
+      
       text-align: center; 
+      
       align-items: center;
+      
       background-color: gray;
     }
+
     button {
+      
       padding: 10px; 
+      
       margin: 5px; 
+      
       font-size: 16px; 
+      
       background-color: black;
+      
       color: red;
     }
  
+     .button:hover{
+      
+      background-color: blue;
+      
+      color: red;
+     } 
+
+     .buttons :hover{
+      
+      background-color: white;
+      
+      color: blue;
+     } 
+  
   </style>
+
 </head>
+
 <body>
+  
   <canvas id="gameCanvas" width="600" height="400"></canvas>
   
   <div class="controls">
-
-    <button id="upButton">Cima</button>
-    <br>
-    <button id="leftButton">Esquerda</button>
-    <button id="downButton">Baixo</button>
-    <button id="rightButton">Direita</button>    
-  
+    
+    <div class="buttons">
+    
+      <button id="upButton">Cima</button>
+    
+      <br>
+    
+      <button id="leftButton">Esquerda</button>
+    
+      <button id="downButton">Baixo</button>
+    
+    
+      <button id="rightButton">Direita</button>    
+    
+    </div>
   </div>
 
   <script>
