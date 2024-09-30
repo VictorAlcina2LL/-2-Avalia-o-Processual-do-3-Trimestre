@@ -1,0 +1,131 @@
+
+<!--
+Programa: Clique no botão e movimente o quadrado.
+Nome: ISABELLA OLIVEIRA RIBEIRO  - Nº: 14 - Turma: 2L
+Nome: MATHEUS SOLER BINA         - Nº: 18      
+Nome: THAINA OLIVEIRA SILVA     - Nº: 26
+Nome: VICTOR REGO MUNIZ          - Nº: 27
+Nome: DIGITE O NOME DE OUTRO MEMBRO DO GRUPO - Nº: DIGITE O NUMERO AQUI.
+DESCRIÇÃO: Descreva, resumidamente, o que faz o seu programa aqui.
+-->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Movimento do Componente</title>
+  <body>
+  <style> 
+  
+   canvas{
+      border-style: ridge;
+      border-color: aqua; 
+      display: block; 
+      margin: 30px auto; 
+    }
+    .controls {
+      text-align: center; 
+      align-items: center;
+      background-color: gray;
+    }
+    button {
+      padding: 10px; 
+      margin: 5px; 
+      font-size: 16px; 
+      background-color: black;
+      color: red;
+    }
+ 
+  </style>
+</head>
+<body>
+  <canvas id="gameCanvas" width="600" height="400"></canvas>
+  
+  <div class="controls">
+
+    <button id="upButton">Cima</button>
+    <br>
+    <button id="leftButton">Esquerda</button>
+    <button id="downButton">Baixo</button>
+    <button id="rightButton">Direita</button>    
+  
+  </div>
+
+  <script>
+    
+    const canvas = document.getElementById('gameCanvas');
+    
+    const ctx = canvas.getContext('2d');
+
+    let componentX = 100, componentY = 100; 
+    
+      const componentSize = 40; 
+
+        let intervalId = null;
+     
+let direction = null; 
+
+    function drawComponent() {
+      
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      ctx.fillStyle = '#B22222';
+      
+      ctx.fillRect(componentX, componentY, componentSize, componentSize);
+    }
+
+    function moveComponent() {
+      
+      if (direction === 'left') componentX -= 3;   
+      
+      if (direction === 'right') componentX += 3; 
+      
+      if (direction === 'up') componentY -= 3;     
+      
+      if (direction === 'down') componentY += 3;  
+
+      
+      componentX = Math.max(0, Math.min(canvas.width - componentSize, componentX));
+      
+      componentY = Math.max(0, Math.min(canvas.height - componentSize, componentY));
+
+      drawComponent();
+    }
+
+    function startMovement(dir) {
+      
+      if (!intervalId) { 
+        
+        direction = dir; 
+        
+        intervalId = setInterval(moveComponent, 10);
+      }
+    }
+  
+    function stopMovement() {
+     
+      clearInterval(intervalId); 
+      
+      intervalId = null; 
+    }
+
+    document.getElementById('leftButton').addEventListener('mousedown', () => startMovement('left'));
+    
+    document.getElementById('leftButton').addEventListener('mouseup', stopMovement);
+    
+    document.getElementById('rightButton').addEventListener('mousedown', () => startMovement('right'));
+    
+    document.getElementById('rightButton').addEventListener('mouseup', stopMovement);
+    
+    document.getElementById('upButton').addEventListener('mousedown', () => startMovement('up'));
+    
+    document.getElementById('upButton').addEventListener('mouseup', stopMovement);
+    
+    document.getElementById('downButton').addEventListener('mousedown', () => startMovement('down'));
+    
+    document.getElementById('downButton').addEventListener('mouseup', stopMovement);
+    
+    drawComponent();
+  </script>
+</body>
+</html> 
